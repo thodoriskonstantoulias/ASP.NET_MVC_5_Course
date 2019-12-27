@@ -14,7 +14,7 @@ namespace Movie_Rental.Models
         public byte DiscountRate { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public string Name { get; set; } 
 
 
     }
