@@ -7,6 +7,7 @@
 
 @using (Html.BeginForm("Save", "Customers"))
 {
+	@Html.AntiForgeryToken()
 	@Html.ValidationSummary(true, "Please fix the following errors")
 	@Html.HiddenFor(m => m.Customer.Id)
 	<div class="form-group">
