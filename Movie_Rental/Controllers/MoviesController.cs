@@ -10,24 +10,21 @@ namespace Movie_Rental.Controllers
 {
     public class MoviesController : Controller
     {
-        public ActionResult Random()
+        public ActionResult Index()
         {
-            var movie = new Movie { Name = "Seven" };
-            var customers = new List<Customer>
-            {
-                new Customer{Id = 1 , Name = "Ted"},
-                new Customer{Id = 2 , Name = "Kostas"},
-                new Customer{Id = 3 , Name = "Maria"}
-            };
-            var randomViewModel = new RandomMovieViewModel { Movie = movie, Customers = customers };
+            var movies = GetMovies();
 
-            return View(randomViewModel);
+            return View(movies);
         }
 
-        [Route("movies/released/{year}/{month}")]
-        public ActionResult ByReleaseDate(int year, int month)
+        private IEnumerable<Movie> GetMovies()
         {
-            return Content(year + "/" + month);
+            return new List<Movie>
+            {
+                new Movie{Id = 1 ,Name = "Seven"},
+                new Movie{Id = 2 ,Name = "Die Hard"},
+                new Movie{Id = 3 ,Name = "Fast and the Furious"}
+            };
         }
     }
 }
