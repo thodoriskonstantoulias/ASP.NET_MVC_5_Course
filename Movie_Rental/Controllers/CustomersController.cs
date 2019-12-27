@@ -34,7 +34,7 @@ namespace Movie_Rental.Controllers
             //var customer = GetCustomers().FirstOrDefault(c => c.Id == id);
 
             //Using EF
-            var customer = _context.Customers.FirstOrDefault(c => c.Id == id);
+            var customer = _context.Customers.Include(c => c.MembershipType).FirstOrDefault(c => c.Id == id);
 
             if (customer == null) return HttpNotFound();
 
