@@ -13,12 +13,19 @@ namespace Movie_Rental.Models
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
+
+        [Display(Name = "Release Date")]
         public DateTime ReleaseDate { get; set; }
+
         public DateTime DateAdded { get; set; }
+
+        [Display(Name = "Number in Stock")]
         public byte NumberInStock { get; set; }
+        
+        public MovieGenre MovieGenre { get; set; }
 
         [Required]
-        public MovieGenre MovieGenre { get; set; }
+        [Display(Name = "Movie Genre")]
         public byte MovieGenreId { get; set; }
 
     }
