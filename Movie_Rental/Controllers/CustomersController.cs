@@ -39,7 +39,7 @@ namespace Movie_Rental.Controllers
         public ActionResult New()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
-            var viewModel = new NewCustomerViewModel { MembershipTypes = membershipTypes };
+            var viewModel = new NewCustomerViewModel { Customer = new Customer(), MembershipTypes = membershipTypes };
 
             return View("CustomerForm", viewModel);
         }
