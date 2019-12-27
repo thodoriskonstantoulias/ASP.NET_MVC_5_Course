@@ -1,7 +1,15 @@
-﻿@model Movie_Rental.Models.Movie
+﻿@model Movie_Rental.ViewModels.RandomMovieViewModel
 @{
-    ViewBag.Title = "Random";
+	ViewBag.Title = "Random";
 }
-
-<h2>Movie name is @Model.Name</h2>
+@{
+	var className = Model.Customers.Count > 2 ? "text-danger" : null;
+}
+<h2 class="@className">Movie name is @Model.Movie.Name</h2>
+<ul>
+	@foreach (var customer in Model.Customers)
+	{
+		<li>The name of the customer is @customer.Name</li>
+	}
+</ul>
 
