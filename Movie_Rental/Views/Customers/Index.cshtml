@@ -4,19 +4,29 @@
 }
 
 <h2>Customers</h2>
-<table class="table table-bordered table-hover">
-	<thead>
-		<tr>
-			<th>Customer</th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach (var customer in Model)
-		{
+@if (Model.Count() == 0)
+{
+	<p>There are no customers in database</p>
+}
+else
+{
+	<table class="table table-bordered table-hover">
+		<thead>
 			<tr>
-				<td>@Html.ActionLink(customer.Name,"Details","Customers",new { id = customer.Id},null)</td>
+				<th>Customer</th>
+				<th>Discount Rate</th>
 			</tr>
-		}
-	</tbody>
-</table>
+		</thead>
+		<tbody>
+			@foreach (var customer in Model)
+			{
+				<tr>
+					<td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
+					<td>@customer.MembershipType.DiscountRate%</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+
 
