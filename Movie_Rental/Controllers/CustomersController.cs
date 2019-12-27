@@ -21,9 +21,6 @@ namespace Movie_Rental.Controllers
         }
         public ActionResult Index()
         {
-            //var customers = GetCustomers();
-
-            //Using EF
             var customers = _context.Customers.Include(c => c.MembershipType).ToList();
 
             return View(customers);
@@ -31,9 +28,6 @@ namespace Movie_Rental.Controllers
 
         public ActionResult Details(int id)
         {
-            //var customer = GetCustomers().FirstOrDefault(c => c.Id == id);
-
-            //Using EF
             var customer = _context.Customers.Include(c => c.MembershipType).FirstOrDefault(c => c.Id == id);
 
             if (customer == null) return HttpNotFound();
