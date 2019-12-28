@@ -20,6 +20,7 @@ namespace Movie_Rental.Controllers
         {
             _context.Dispose();
         }
+
         public ActionResult Index()
         {
             //We made AJAX request so we do not need the next line
