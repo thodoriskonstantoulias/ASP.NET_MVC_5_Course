@@ -65,6 +65,11 @@ namespace Movie_Rental.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Driving Licence")]
+        public string DrivingLicence { get; set; }
+
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

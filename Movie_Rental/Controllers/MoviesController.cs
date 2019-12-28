@@ -34,8 +34,7 @@ namespace Movie_Rental.Controllers
             else
             {
                 return View("ReadOnlyList");
-            }
-            
+            }          
         }
 
         public ActionResult Details(int id)
