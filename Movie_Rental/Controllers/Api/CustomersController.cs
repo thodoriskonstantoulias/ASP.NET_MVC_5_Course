@@ -17,9 +17,9 @@ namespace Movie_Rental.Controllers.Api
         {
             _context = new ApplicationDbContext();
         }
-        public IEnumerable<CustomerDto> GetCustomers()
+        public IHttpActionResult GetCustomers()
         {
-            return _context.Customers.ToList().Select(Mapper.Map<Customer,CustomerDto>);
+            return Ok(_context.Customers.ToList().Select(Mapper.Map<Customer,CustomerDto>));
         }
 
         public IHttpActionResult GetCustomer(int id)
@@ -47,27 +47,31 @@ namespace Movie_Rental.Controllers.Api
         }
 
         [HttpPut]
-        public void UpdateCustomer(int id, CustomerDto customerDto)
+        public IHttpActionResult UpdateCustomer(int id, CustomerDto customerDto)
         {
-            if (!ModelState.IsValid) throw new HttpResponseException(HttpStatusCode.BadRequest);
+            if (!ModelState.IsValid) return BadRequest();
 
             var custInDb = _context.Customers.FirstOrDefault(c => c.Id == id);
-            if (custInDb == null) throw new HttpResponseException(HttpStatusCode.NotFound);
+            if (custInDb == null) return NotFound();
 
             Mapper.Map(customerDto, custInDb);
 
             _context.SaveChanges();
+
+            return Ok();
         }
 
         [HttpDelete]
-        public void DeleteCustomer(int id)
+        public IHttpActionResult DeleteCustomer(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
 
-            if (customer == null) throw new HttpResponseException(HttpStatusCode.NotFound);
+            if (customer == null) return NotFound();
 
             _context.Customers.Remove(customer);
             _context.SaveChanges();
+
+            return Ok();
         }
     }
 }
