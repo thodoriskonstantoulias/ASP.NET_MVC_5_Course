@@ -68,6 +68,9 @@ namespace Movie_Rental.Models
         [Display(Name = "Driving Licence")]
         public string DrivingLicence { get; set; }
 
+        [Required]
+        [Display(Name = "Phone")]
+        public string Phone { get; set; }
 
         [Required]
         [EmailAddress]
