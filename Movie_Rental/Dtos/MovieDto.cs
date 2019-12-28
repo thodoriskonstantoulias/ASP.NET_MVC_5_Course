@@ -21,6 +21,8 @@ namespace Movie_Rental.Dtos
         [Range(1, 20)]
         public byte NumberInStock { get; set; }
 
+        public MovieGenreDto MovieGenre { get; set; }
+
         [Required]
         public byte MovieGenreId { get; set; }
     }

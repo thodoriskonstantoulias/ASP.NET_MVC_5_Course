@@ -22,9 +22,11 @@ namespace Movie_Rental.Controllers
         }
         public ActionResult Index()
         {
-            var movies = _context.Movies.Include(m => m.MovieGenre).ToList();
+            //We made AJAX request so we do not need the next line
+            //var movies = _context.Movies.Include(m => m.MovieGenre).ToList();
 
-            return View(movies);
+            //return View(movies);
+            return View();
         }
 
         public ActionResult Details(int id)
