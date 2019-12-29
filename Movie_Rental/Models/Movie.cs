@@ -29,5 +29,7 @@ namespace Movie_Rental.Models
         [Display(Name = "Movie Genre")]
         public byte MovieGenreId { get; set; }
 
+        public byte NumberAvailable { get; set; }
+
     }
 }

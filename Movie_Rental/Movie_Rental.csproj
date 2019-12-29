@@ -189,6 +189,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Controllers\RentalsController.cs" />
     <Compile Include="Dtos\CustomerDto.cs" />
     <Compile Include="Dtos\MembershipTypeDto.cs" />
     <Compile Include="Dtos\MovieDto.cs" />
@@ -256,6 +257,10 @@
     <Compile Include="Migrations\201912291030347_AddRentalTable.cs" />
     <Compile Include="Migrations\201912291030347_AddRentalTable.Designer.cs">
       <DependentUpon>201912291030347_AddRentalTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912291217034_AddFieldToMovies.cs" />
+    <Compile Include="Migrations\201912291217034_AddFieldToMovies.Designer.cs">
+      <DependentUpon>201912291217034_AddFieldToMovies.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -515,6 +520,7 @@
     <Content Include="Views\Customers\CustomerForm.cshtml" />
     <Content Include="Views\Movies\MovieForm.cshtml" />
     <Content Include="Views\Movies\ReadOnlyList.cshtml" />
+    <Content Include="Views\Rentals\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -577,6 +583,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912291030347_AddRentalTable.resx">
       <DependentUpon>201912291030347_AddRentalTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912291217034_AddFieldToMovies.resx">
+      <DependentUpon>201912291217034_AddFieldToMovies.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
