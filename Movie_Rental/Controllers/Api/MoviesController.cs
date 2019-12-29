@@ -19,9 +19,18 @@ namespace Movie_Rental.Controllers.Api
             _context = new ApplicationDbContext();
         }
 
-        public IHttpActionResult GetMovies()
+        public IHttpActionResult GetMovies(string query = null)
         {
-            return Ok(_context.Movies.Include(m=>m.MovieGenre).ToList().Select(Mapper.Map<Movie,MovieDto>));
+            var moviesQuery = _context.Movies.Include(m => m.MovieGenre).Where(m => m.NumberAvailable > 0);
+
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                moviesQuery = moviesQuery.Where(m => m.Name.Contains(query));
+            }
+
+            var movieDtos = moviesQuery.ToList().Select(Mapper.Map<Movie, MovieDto>);
+
+            return Ok(movieDtos);
         }
         public IHttpActionResult GetMovie(int id)
         {
