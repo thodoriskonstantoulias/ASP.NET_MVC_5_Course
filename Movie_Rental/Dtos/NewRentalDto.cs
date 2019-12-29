@@ -7,7 +7,7 @@ namespace Movie_Rental.Dtos
 {
     public class NewRentalDto
     {
-        public int CustomerId { get; set; }
-        public List<int> MoviesIds { get; set; }
+        public int customerId { get; set; }
+        public List<int> moviesIds { get; set; }
     }
 }
