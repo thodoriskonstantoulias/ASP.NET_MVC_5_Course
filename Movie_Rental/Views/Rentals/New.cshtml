@@ -8,13 +8,13 @@
 	<div class="form-group">
 		<label>Customer</label>
 		<div class="tt-container">
-			<input id="customer" data-rule-validCustomer="true" required type="text" value="" class="form-control" />
+			<input id="customer" name="customer" data-rule-validCustomer="true" required type="text" value="" class="form-control" />
 		</div>
 	</div>
 	<div class="form-group">
 		<label>Movie</label>
 		<div class="tt-container">
-			<input id="movie" type="text" value="" class="form-control" />
+			<input id="movie" name="movie" type="text" data-rule-atLeastOneMovie="true" value="" class="form-control" />
 		</div>
 	</div>
 	<div class="row">
@@ -82,9 +82,12 @@
 				return vm.customerId && vm.customerId != 0
 			}, "Please select a valid customer");
 
-			$("#newRental").validate({
+			$.validator.addMethod("atLeastOneMovie", function () {
+				return vm.moviesIds.length > 0
+			}, "Please select at least one movie");
+
+			var validator = $("#newRental").validate({
 				submitHandler: function () {
-					e.preventDefault();
 
 				$.ajax({
 					url: "/api/newRental",
@@ -93,10 +96,16 @@
 				})
 					.done(function () {
 						toastr.success("Rentals successfully recorded");
+						$("#customer").typeahead("val", "");
+						$("#movie").typeahead("val", "");
+						$("#movies").empty();
+						vm = { customerId: "", moviesIds: [] };
+						validator.resetForm();
 					})
 					.fail(function () {
-						toastr.fail("Error occured");
+						toastr.error("Error occured");
 					});
+					return false;
 				}
 			});
 		});
